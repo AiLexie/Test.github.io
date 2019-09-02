@@ -29,6 +29,7 @@ civilianSchema.methods.updateCiv = function(request, response) {
  this.civilian.birthday = request.body.birthday;
  this.civilian.warrants = request.body.warrants;
  this.civilian.email = request.body.submitNewCiv;
+ this.civilian.address = request.body.address;
  response.redirect('/civ-dashboard');
 };
 

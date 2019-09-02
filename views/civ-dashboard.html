@@ -168,10 +168,17 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="birthday">Date of Birth</label>
               <div class="col-md-4">
-              <input id="birthday" name="birthday" type="text" placeholder="mm/dd/yyyy" maxlength="10" class="form-control input-md" required>
-
+                <input id="birthday" name="birthday" type="date" placeholder="mm-dd-yyyy" max="9999-12-12"  class="form-control input-md" required>
               </div>
             </div>
+
+            <!-- Address input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="address">Address</label>
+                <div class="col-md-4">
+                <input id="address" name="address" type="text" placeholder="Address" maxlength="100" class="form-control input-md" required>
+                </div>
+              </div>
 
             <!-- Select Basic -->
             <div class="form-group">
@@ -311,27 +318,32 @@
 
             <div class="col-md-9">
               <label class="col-md-4 control-label margin-bottom-1" for="civ-first-name">First Name:</label>
-              <label id="firstNameView" class="col-md-5">FirstName here</label>
+              <label id="firstNameView" class="col-md-5"></label>
             </div>
 
             <div class="col-md-9">
               <label class="col-md-4 control-label margin-bottom-1" for="civ-last-name">Last Name:</label>
-              <label id="lastNameView" class="col-md-5">LastName here</label>
+              <label id="lastNameView" class="col-md-5"></label>
             </div>
 
             <div class="col-md-9">
               <label class="col-md-4 control-label margin-bottom-1" for="license-status">License Status:</label>
-              <label id="licenseStatusView" class="col-md-5">License Status</label>
+              <label id="licenseStatusView" class="col-md-5"></label>
             </div>
 
             <div class="col-md-9">
               <label class="col-md-4 control-label margin-bottom-1" for="birthday">Date of Birth:</label>
-              <label id="birthdayView" class="col-md-5">birthday here</label>
+              <label id="birthdayView" class="col-md-5"></label>
             </div>
 
             <div class="col-md-9">
+                <label class="col-md-4 control-label margin-bottom-1" for="address">Address:</label>
+                <label id="addressView" class="col-md-5"></label>
+              </div>
+
+            <div class="col-md-9">
               <label class="col-md-4 control-label margin-bottom-1" for="warrants">Warrants?</label>
-              <label id="warrantsView" class="col-md-5">warrants here</label>
+              <label id="warrantsView" class="col-md-5"></label>
             </div>
 
             <div class="col-md-12 text-align-center">
@@ -428,7 +440,15 @@
 
     var firstName = myVar[index].civilian.firstName
     var lastName = myVar[index].civilian.lastName
-    var birthday = myVar[index].civilian.birthday
+    let birthday = myVar[index].civilian.birthday //yyyy-mm-dd (new format) | mm/dd/yyyy (old format)
+    birthdayArr = birthday.split("-")
+    if (birthdayArr.length >= 3) {
+      birthday = birthdayArr[1] + "/" + birthdayArr[2] + "/" + birthdayArr[0]
+    } else if (birthday.split("/").length >= 3) {
+      //use old format
+    } else {
+      console.error("Invalid birthday format: ", birthday)
+    }
     var address = myVar[index].civilian.address
     var licenseStatus = myVar[index].civilian.licenseStatus
     switch(licenseStatus) {
@@ -453,6 +473,7 @@
     $('#lastNameView').text(lastName)
     $('#licenseStatusView').text(licenseStatus)
     $('#birthdayView').text(birthday)
+    $('#addressView').text(address)
     $('#warrantsView').text(warrants)
     civFullName = firstName + ' ' + lastName
     $('#removeCiv').val(civFullName)
@@ -523,23 +544,4 @@ $("#civ-last-name").keydown(function(event) {
 });
 });
 
-var format = "mm/dd/yyyy";
-var match = new RegExp(format
-    .replace(/(\w+)\W(\w+)\W(\w+)/, "^\\s*($1)\\W*($2)?\\W*($3)?([0-9]*).*")
-    .replace(/m|d|y/g, "\\d"));
-var replace = "$1/$2/$3$4"
-    .replace(/\//g, format.match(/\W/));
-
-function doFormat(target)
-{
-    target.value = target.value
-        .replace(/(^|\W)(?=\d\W)/g, "$10")   // padding
-        .replace(match, replace)             // fields
-        .replace(/(\W)+/g, "$1");            // remove repeats
-}
-
-$("#birthday").keyup(function(e) {
-   if(!e.ctrlKey && !e.metaKey && (e.keyCode == 32 || e.keyCode > 46))
-      doFormat(e.target)
-});
 </script>
