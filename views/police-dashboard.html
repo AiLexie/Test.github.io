@@ -903,11 +903,4 @@ $(document).ready(function() {
     civ.style.display = 'none'
   })
 
-  $('#plateDatabaseModal').on('hidden.bs.modal', function () {
-    $(this).find('form').trigger('reset');
-    let plate = document.getElementById('plateDetails');
-    let stolenMessage = document.getElementById('stolenMessage');
-    plate.style.display = 'none'
-    stolenMessage.style.display = 'none'
-  })
 </script>
