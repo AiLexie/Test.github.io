@@ -131,28 +131,28 @@
 
               <div id="civDetails" style="display:none">
                 <div class="col-md-9">
-                  <label id="first-and-last-name" class="col-md-12 font-large">Name here</label>
+                  <label id="first-and-last-name" class="col-md-12 font-large"></label>
                 </div>
 
                 <div class="col-md-12">
                   <div class="col-md-5">
                     <label class="col-md-3 margin-bottom-1" for="dob">DOB:</label>
-                    <label id="birthday" class="col-md-5">dob here</label>
+                    <label id="birthday" class="col-md-5"></label>
                   </div>
                   <div class="col-md-5">
                     <label class="col-md-4 margin-bottom-1" for="license">License:</label>
-                    <label id="license-status" class="col-md-3">license here</label>
+                    <label id="license-status" class="col-md-3"></label>
                   </div>
                 </div>
 
                 <div class="col-md-12">
                   <div class="col-md-5">
                     <label class="col-md-4 margin-bottom-1" for="address">Address:</label>
-                    <label id="address" class="col-md-5">N/A</label>
+                    <label id="address" class="col-md-5"></label>
                   </div>
                   <div class="col-md-5">
                     <label class="col-md-7 margin-bottom-1" for="ticket">Ticket Count:</label>
-                    <label id="ticket-count" class="col-md-5">ticket here</label>
+                    <label id="ticket-count" class="col-md-5"></label>
                   </div>
                 </div>
 
@@ -632,6 +632,14 @@ $(document).ready(function() {
 
     let name = myCiv[index].civilian.firstName + ' ' + myCiv[index].civilian.lastName
     let birthday = myCiv[index].civilian.birthday
+    birthdayArr = birthday.split("-")
+    if (birthdayArr.length >= 3) {
+      birthday = birthdayArr[1] + "/" + birthdayArr[2] + "/" + birthdayArr[0]
+    } else if (birthday.split("/").length >= 3) {
+      //use old format
+    } else {
+      console.error("Invalid birthday format: ", birthday)
+    }
     let address = myCiv[index].civilian.address
     let licenseStatus = myCiv[index].civilian.licenseStatus
     switch (licenseStatus) {
