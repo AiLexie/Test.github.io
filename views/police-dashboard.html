@@ -87,9 +87,7 @@
   </div>
   <div id="nameDatabaseModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-      <div id="warrantMessage" class="alert alert-danger" style="display:none">
-        <strong>Danger!</strong> Warrant found for this suspect.
-      </div>
+      
       <div id="noWarrantFound" class="alert alert-success" style="display:none">
         <strong>NCIC Warrant Check!</strong> Clean, No Warrants found.
       </div>
@@ -130,6 +128,56 @@
               </div>
 
               <div id="civDetails" style="display:none">
+
+                  <div class="panel-group" id="accordion">
+                      <% if (civilians != null) {%>
+                        <% for(var i=0; i<civilians.length; i++) {%>
+                          <div class="panel panel-default background-transparent">
+                              <div class="panel-heading" data-toggle="collapse" data-id=<%=i%> data-parent="#accordion" href="#collapse<%=i%>"
+                                <h4 class="panel-title">
+                                  <a class="blue-hover">
+                                      <%= civilians[i].civilian.firstName%> <%=civilians[i].civilian.lastName%> | <%= civilians[i].civilian.birthday%></a>
+                                </h4>
+                              </div>
+                              <% if (i === 0) {%>
+                              <div id="collapse<%=i%>" class="panel-collapse collapse in">
+                                  <% } else {%>
+                                    <div id="collapse<%=i%>" class="panel-collapse collapse">
+                                    <% } %>
+                                <div class="panel-body">
+                                  <% if (civilians[i].civilian.warrants == 2) {%>
+                                    <div id="warrantMessage" class="alert alert-danger" style="display:none">
+                                        <strong>Danger!</strong> Warrant found for this suspect.
+                                      </div>
+                                  <% } %>
+                                    Civilian Name: <%= civilians[i].civilian.firstName%> <%= civilians[i].civilian.lastName%><br/>
+                                    Date of Birth: <%= civilians[i].civilian.birthday%><br/>
+                                    Address: <%= civilians[i].civilian.address%><br/>
+                                    <% if (civilians[i].civilian.licenseStatus == 1) {%>
+                                      <p class="plate-body-text">License Status: Valid <i class="ion-checkmark-circled color-green"></i></p>
+                                      <% } else if (civilians[i].civilian.licenseStatus == 2) {%>
+                                      <p class="plate-body-text">License Status: Revoked <i class="ion-alert-circled color-red"></i></p>
+                                    <% } else { %>
+                                      <p class="plate-body-text">License Status: None <i class="ion-alert-circled color-red"></i></p>
+                                      <% } %>
+                                    Ticket Count: <%= tickets[i].length%><br/>
+                                </div>
+                              </div>
+                            </div>
+                            <% } %>
+                          <% } %>
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
                 <div class="col-md-9">
                   <label id="first-and-last-name" class="col-md-12 font-large"></label>
                 </div>
@@ -158,16 +206,16 @@
 
                 <!--Table for Tickets  -->
                 <div class="col-md-5 name-table text-align-center">
-                  <table id="ticket-table" class="table table-hover" border="1" frame="box">
-                    <thead>
-                      <tr>
-                        Tickets:
-                      </tr>
-                    </thead>
-                    <tbody id="ticket-body">
-                    </tbody>
-                  </table>
-                </div>
+                    <table id="ticket-table" class="table table-hover" border="1" frame="box">
+                      <thead>
+                        <tr>
+                          Tickets:
+                        </tr>
+                      </thead>
+                      <tbody id="ticket-body">
+                      </tbody>
+                    </table>
+                  </div>
               </div>
             </fieldset>
           </form>
@@ -247,6 +295,7 @@
                         <% } %>
                       <% } %>
                   </div>
+                </div>
               </div>
             </fieldset>
           </form>
