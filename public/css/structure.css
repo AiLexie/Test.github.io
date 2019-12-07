@@ -11,7 +11,7 @@
 
 */
 /*body {
-	background: #eff3f6;
+	background: #f702b6;
 	background: url(../images/background.jpeg) repeat scroll;
 }*/
 
@@ -21,7 +21,7 @@
 }
 
 .box {
-	background: white;
+	background: pink;
 	border: 1px solid #C3D4DB;
 	border-top: 1px;
 	-webkit-border-radius: 5px;
@@ -120,7 +120,7 @@
 }
 
 .boxBody {
-	background: #fefefe;
+	background: #f205b3;
 	border-top: 1px solid #dde0e8;
 	border-bottom: 1px solid #dde0e8;
 	padding: 10px 20px;
