@@ -1,3 +1,4 @@
+
 var User = require('../app/models/user');
 var Civilian = require('../app/models/civilian');
 var Vehicle = require('../app/models/vehicle');
@@ -562,6 +563,14 @@ module.exports = function (app, passport, server) {
       io.sockets.emit('updateusers', usernames);
       socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
     });
+
+      socket.on('find_user', function(value) {
+        Civilian.find({'civilian.firstName': value}, function(err, user) {
+          if (err) throw err;
+          if (!user) socket.emit('find_user_result', {});
+          else socket.emit('find_user_result', user)
+        })
+      })
   });
 
 };
