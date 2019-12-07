@@ -1,3 +1,4 @@
+
 /*
 
 Landing Zero theme - A free landing page theme from BootstrapZero
@@ -15,9 +16,9 @@ body {
 
 body {
     font-family: 'Questrial', 'Helvetica Neue', Arial, sans-serif;
-    background-color: #282828;
-    color: #d3d3d3;
-    webkit-tap-highlight-color: #222;
+    background-color: #130140;
+    color: #130140;
+    webkit-tap-highlight-color: #130140;
 }
 
 hr {
@@ -331,6 +332,11 @@ footer {
     color: #222;
     background-color: #ccc;
     box-shadow: none;
+}
+
+.form-label {
+    padding: 6px 0px 0px 0px;
+    font-size: 14px;
 }
 
 textarea {
