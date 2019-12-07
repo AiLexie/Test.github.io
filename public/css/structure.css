@@ -127,8 +127,8 @@
 }
 
 .box footer {
-	background: white;
-	border-top: 1px solid #fff;
+	background: pink;
+	border-top: 1px solid #f205b3;
 	padding: 10px;
 	overflow: hidden;
 }
