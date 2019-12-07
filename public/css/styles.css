@@ -16,9 +16,9 @@ body {
 
 body {
     font-family: 'Questrial', 'Helvetica Neue', Arial, sans-serif;
-    background-color: #4d0000;
-    color: #130140;
-    webkit-tap-highlight-color: #4d0000;
+    background-color: #220091;
+    color: #eb05b5;
+    webkit-tap-highlight-color: #220091;
 }
 
 hr {
@@ -30,7 +30,7 @@ hr {
 }
 
 hr.light {
-    border-color: #fff;
+    border-color: #E307EB;
 }
 
 a {
@@ -42,8 +42,8 @@ a {
 
 a:hover,
 a:focus {
-    color: #d9edf7;
-    outline: 0;
+    color: #a3d6f0;
+    outline: 1;
 }
 
 h1,
@@ -71,12 +71,12 @@ p {
 }
 
 .bg-primary {
-    background-color: #4d0000;
+    background-color: #220091;
 }
 
 .bg-dark {
     color: #eee;
-    background-color: #4d0000;
+    background-color: #220091;
 }
 
 .cursive {
@@ -97,7 +97,7 @@ p {
 }
 
 .modal-content {
-    background-color: #1d1d1d;
+    background-color: #220091;
 }
 
 section {
@@ -141,7 +141,7 @@ footer {
 
 .navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle:hover {
-    background-color: #181818;
+    background-color: #220091;
 }
 
 .navbar-default .navbar-toggle,
@@ -185,7 +185,7 @@ footer {
     }
     .navbar-default .navbar-header .navbar-brand:hover,
     .navbar-default .navbar-header .navbar-brand:focus {
-        color: #f4f4f4;
+        color: #eb05b5;
     }
     .navbar-default .nav>li>a,
     .navbar-default .nav>li>a:focus {
@@ -196,7 +196,7 @@ footer {
     }
     .navbar-default .nav>li>a:hover,
     .navbar-default .nav>li>a:focus:hover {
-        color: #fefefe;
+        color: #eb05b5;
     }
     .navbar-default.affix {
         border-color: rgba(34, 34, 34, .05);
